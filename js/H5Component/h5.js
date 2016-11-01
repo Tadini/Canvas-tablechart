@@ -56,8 +56,9 @@ var H5 = function(){
   }
 
   /*h5对象初始化呈现*/
-  this.loader = function(firstPage){
+  this.loader = function(imgData,firstPage){
     var self = this;
+    var num = 0;
     this.el.fullpage({
 
       onLeave: function(index,nextIndex,direction){
@@ -73,6 +74,28 @@ var H5 = function(){
     if(firstPage){
       $.fn.fullpage.moveTo(firstPage);
     }
+    if(!$.isArray(imgData)){
+      console.error('请填入图片数组');
+      return ;
+    }
+    $.each(imgData,function(index,item){
+      var on = true;
+      var img = new Image();
+      img.src = item;
+      $(img).on('load',function(){
+        num++;
+        // console.log(num)
+        if(num==imgData.length){
+          $('#loading').remove();
+        }
+      })
+      $(img).on('error',function(){
+          on = false; 
+          $('#loading').remove();
+          return false;
+      })
+      return on;
+    })
   }
   return this;
 }
