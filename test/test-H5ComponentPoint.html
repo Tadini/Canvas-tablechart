@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+  <title>散点图</title>
+  <link rel="stylesheet" href="../css/H5ComponentBase.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/H5Component/H5ComponentBase.js"></script>
+  <!-- 引入散点图的资源 -->
+  <script src="../js/H5Component/H5ComponentPoint.js"></script>
+  <link rel="stylesheet" href="../css/H5ComponentPoint.css">
+</head>
+<body>
+  <div class="iphone">
+
+  </div>
+  <script>
+  var cfg = {
+    type: 'point',
+    width: 300,
+    height:300,
+    data:[
+      ['A像',.4,'green'],
+      ['B像',.2,'yellow',0,'-60%'],
+      ['C像',.2,'red',0,'120%'],
+    ],
+    css:{
+      bottom:0,
+      opacity:0
+    },
+    animateIn:{bottom:'40%',opacity:1},
+    animateOut:{bottom:0,opacity:0},
+    center: true
+  }
+  var h5 = new H5ComponentPoint('point',cfg);
+  $('.iphone').append(h5);
+
+  var leave = true;
+  $('body').on('click',function(){
+    leave = !leave;
+    $('.h5_component').trigger(leave  ? 'onLeave' : 'onLoad');
+  })
+  </script>
+</body>
+</html>

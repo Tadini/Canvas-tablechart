@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>可视化数据</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+  <style>
+  *{
+    margin:0;padding:0;
+  }
+  body{
+    background-color: black;
+  }
+  .iphone{
+    width: 320px;
+    height: 540px;
+    background-color:#fff;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+  }
+  /*.h5_component_base{
+    transition:all 1s;
+  }
+  .h5_component_base_load{
+    opacity:1;
+  }
+  .h5_component_base_leave{
+    opacity:0;
+  }*/
+  </style>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/H5Component/H5ComponentBase.js"></script>
+  <link rel="stylesheet" href="../css/H5ComponentBase.css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+  <div class="iphone">
+
+  </div>
+  <script>
+    var cfg = {
+      type: 'base',
+      text: 'text',
+      width: 514,
+      height:306,
+      name: 'myName',
+      bg: './p1_people.png',
+      css:{
+        left:50,
+        top:50,
+        opacity:0,
+
+      },
+      center: true,
+      animateIn:{top:50,opacity:1},
+      animateOut:{top:150,opacity:0}
+    }
+    var h5 = new H5ComponentBase(cfg);
+    $('.iphone').append(h5);
+
+    var load = true;
+    $('body').click(function(){
+      load = !load;
+      $('.h5_component').trigger(load ? 'onLeave' : 'onLoad');
+    })
+  </script>
+</body>
+</html>

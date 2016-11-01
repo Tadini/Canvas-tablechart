@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+  <title>雷达图</title>
+  <link rel="stylesheet" href="../css/H5ComponentBase.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/H5Component/H5ComponentBase.js"></script>
+  <!-- 引入折线图的资源 -->
+  <script src="../js/H5Component/H5ComponentRadar.js"></script>
+  <link rel="stylesheet" href="../css/H5ComponentRadar.css">
+</head>
+<body>
+  <div class="iphone">
+
+  </div>
+  <script>
+  var cfg = {
+    type: 'radar',
+    width: 500,
+    height:500,
+    data:[
+      ['Javascript',.9,'#ff7676'],
+      ['HTML/CSS',.8],
+      ['CSS3',.7],
+      ['HTML5',.6],
+      ['jQuery',.5]
+    ],
+    css:{
+      top:100,
+      // opacity:0
+    },
+    // animateIn:{top:200,opacity:1},
+    // animateOut:{top:0,opacity:0},
+    center: true
+  }
+  var h5 = new H5ComponentRadar('radar',cfg);
+  $('.iphone').append(h5);
+
+  var leave = true;
+  $('body').on('click',function(){
+    leave = !leave;
+    $('.h5_component').trigger(leave  ? 'onLeave' : 'onLoad');
+  })
+  </script>
+</body>
+</html>
