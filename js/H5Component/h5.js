@@ -69,8 +69,7 @@ var H5 = function(){
 
       }
     })
-    self.page[0].find('.h5_component').trigger('onLoad');
-    this.el.show();
+    
     if(firstPage){
       $.fn.fullpage.moveTo(firstPage);
     }
@@ -87,11 +86,15 @@ var H5 = function(){
         // console.log(num)
         if(num==imgData.length){
           $('#loading').remove();
+          self.page[0].find('.h5_component').trigger('onLoad');
+              self.el.show();
         }
       })
       $(img).on('error',function(){
           on = false; 
           $('#loading').remove();
+          self.page[0].find('.h5_component').trigger('onLoad');
+              self.el.show();
           return false;
       })
       return on;
